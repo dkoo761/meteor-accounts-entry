@@ -96,9 +96,9 @@ AccountsEntry.entrySignUpEvents = {
       if (errMsg.length > 0) {
         msg = "";
         errMsg.forEach(function(e) {
-          msg +=msg.concat(e + "\r\n");
-          Alerts.add(e, 'danger')
+          msg += e + " ";
         });
+        Alerts.add(msg, 'danger');
 
         return true;
       }

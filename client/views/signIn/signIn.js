@@ -39,7 +39,7 @@ AccountsEntry.entrySignInEvents = {
     Meteor.loginWithPassword(Session.get('email'), Session.get('password'), function(error) {
       Session.set('password', null);
       if (error) {
-        Alerts.add(error, 'danger')
+        Alerts.add(error.reason, 'danger')
       } else if (Session.get('fromWhere')) {
         Router.go(Session.get('fromWhere'));
         Session.set('fromWhere',null);

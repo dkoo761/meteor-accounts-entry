@@ -29,12 +29,12 @@ Template.entrySocial.helpers({
   },
   icon: function() {
     switch (this.toString()) {
-      case 'google':
-        return 'google-plus';
-      case 'meteor-developer':
-        return 'rocket';
-      default:
-        return this;
+    case 'google':
+      return 'google-plus';
+    case 'meteor-developer':
+      return 'rocket';
+    default:
+      return this;
     }
   }
 });
@@ -43,7 +43,10 @@ Template.entrySocial.events({
   'click .btn': function(event) {
     var callback, loginWithService, options, serviceName;
     event.preventDefault();
-    serviceName = $(event.target).attr('id').replace('entry-', '');
+
+    // handle click on either button or icon within button
+    serviceName = $(event.target).attr('id').replace('entry-', '').replace('js-icon-', '');
+
     callback = function(err) {
       if (!err) {
         if (Session.get('fromWhere')) {
